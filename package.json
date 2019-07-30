@@ -1,7 +1,7 @@
 {
   "name": "react-formulate-demo",
   "version": "0.1.0",
-  "private": true,
+  "homepage" : "http://nemosity.github.io/react-formulate-demo",
   "dependencies": {
     "@babel/core": "7.2.2",
     "@date-io/date-fns": "^1.3.6",
