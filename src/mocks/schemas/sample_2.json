@@ -1,0 +1,369 @@
+{
+  "config": {
+    "paginated": true,
+    "inlineValidation": true
+  },
+  "schema": [
+    {
+      "pageId": "Incident Type",
+      "content": {
+        "groupId": "our-driver-details",
+        "label": "What best describes your incident?",
+        "elements": [
+          {
+            "id": "incident.type",
+            "widget": "Radio",
+            "validation": {
+              "required": true
+            },
+            "values": [
+              {
+                "label": "Accident",
+                "value": "accident"
+              },
+              {
+                "label": "Fire",
+                "value": "fire"
+              },
+              {
+                "label": "Theft",
+                "value": "theft"
+              }
+            ],
+            "label": {
+              "text": "label.incidentType",
+              "params": {
+                "type": "incident.type"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "pageId": "Incident Date",
+      "content": {
+        "groupId": "our-driver-details",
+        "label": "When did the incident occur?",
+        "elements": [
+          {
+            "id": "incident.date",
+            "widget": "Datepicker",
+            "placeholder": "",
+            "label": "",
+            "validation": {
+              "required": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "pageId": "Your details",
+      "showIf": {
+        "id": "incident.type",
+        "value": "accident"
+      },
+      "content": {
+        "groupId": "our-driver-details",
+        "label": "About the incident",
+        "elements": [
+          {
+            "id": "accident-description",
+            "widget": "Textarea",
+            "placeholder": "E.g. I was parallel parking outside work and backed into a lamp post",
+            "label": "Tell us what happened",
+            "validation": {
+              "required": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "pageId": "Your details",
+      "showIf": {
+        "id": "incident.type",
+        "value": "theft"
+      },
+      "content": {
+        "groupId": "our-driver-details",
+        "label": "About the theft",
+        "elements": [
+          {
+            "id": "vehicle-recovered",
+            "widget": "Radio",
+            "placeholder": "",
+            "values": [
+              {
+                "label": "Yes",
+                "value": "yes"
+              },
+              {
+                "label": "No",
+                "value": "no"
+              }
+            ],
+            "label": "Has the vehicle been found?",
+            "validation": {
+              "required": true
+            }
+          },
+          {
+            "id": "vehicle-recovered-by",
+            "widget": "Input",
+            "label": "Who found the vehicle?",
+            "validation": {
+              "required": true
+            },
+            "showIf": {
+              "id": "vehicle-recovered",
+              "value": "yes"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "pageId": "About the incident",
+      "content": {
+        "groupId": "other-driver-details",
+        "elements": [
+          {
+            "id": "tp-involed",
+            "widget": "Radio",
+            "placeholder": "",
+            "values": [
+              {
+                "label": "Yes",
+                "value": "yes"
+              },
+              {
+                "label": "No",
+                "value": "no"
+              }
+            ],
+            "label": "Was another vehicle involved?",
+            "validation": {
+              "required": true
+            }
+          },
+          {
+            "id": "other-drivers",
+            "widget": "Repeater",
+            "label": "Please add other drivers involved",
+            "showIf": {
+              "id": "tp-involed",
+              "value": "yes"
+            },
+            "properties": {
+              "name": "Other driver",
+              "minRepeats": 1,
+              "maxRepeats": 3
+            },
+            "elements": [
+              {
+                "id": "name",
+                "widget": "Input",
+                "placeholder": "",
+                "label": "Driver name",
+                "validation": {
+                  "required": true,
+                  "pattern": "^[A-Za-z\\s]+$"
+                }
+              },
+              {
+                "id": "insured",
+                "widget": "Dropdown",
+                "placeholder": "",
+                "label": "Who is the third party insured with?",
+                "validation": {
+                  "required": true
+                },
+                "properties": {
+                  "src": "/refData.json"
+                }
+              },
+              {
+                "id": "damaged",
+                "widget": "Radio",
+                "placeholder": "",
+                "validation": {
+                  "required": true
+                },
+                "values": [
+                  {
+                    "label": "Yes",
+                    "value": "yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "no"
+                  }
+                ],
+                "label": "Was their car damaged?"
+              },
+              {
+                "id": "damage-description",
+                "widget": "Input",
+                "placeholder": "E.g. small dent to left bumper",
+                "label": "What was damaged?",
+                "validation": {
+                  "required": true
+                },
+                "showIf": {
+                  "id": "damaged",
+                  "value": "yes"
+                }
+              },
+              {
+                "id": "passengers",
+                "widget": "Repeater",
+                "label": "Please add passengers that were in the vehicle",
+                "properties": {
+                  "name": "Passenger",
+                  "minRepeats": 0,
+                  "maxRepeats": 3
+                },
+                "elements": [
+                  {
+                    "id": "name",
+                    "widget": "Input",
+                    "placeholder": "",
+                    "label": "Passenger",
+                    "validation": {
+                      "required": true,
+                      "pattern": "^[A-Za-z\\s]+$"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "label": "Other driver details"
+      }
+    },
+    {
+      "pageId": "Your details",
+      "showIf": {
+        "id": "tp-involed",
+        "value": "yes"
+      },
+      "content": {
+        "groupId": "at-fault-details",
+        "label": "Responsibility",
+        "elements": [
+          {
+            "id": "at-fault",
+            "widget": "Radio",
+            "values": [
+              {
+                "label": "Me",
+                "value": "me"
+              },
+              {
+                "ref": "other-drivers",
+                "label": "name",
+                "value": "$path"
+              },
+              {
+                "label": "Someone else",
+                "value": "tp"
+              },
+              {
+                "label": "Not sure",
+                "value": "unknown"
+              }
+            ],
+            "label": "Who was at fault?",
+            "validation": {
+              "required": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "pageId": "Contact Details",
+      "content": {
+        "groupId": "other-driver-details",
+        "elements": [
+          {
+            "id": "main-contact.preferred-method",
+            "widget": "Radio",
+            "placeholder": "",
+            "values": [
+              {
+                "label": "Call",
+                "value": "phone"
+              },
+              {
+                "label": "Text (SMS)",
+                "value": "sms"
+              },
+              {
+                "label": "Email",
+                "value": "email"
+              }
+            ],
+            "label": "What's your preferred way for us to contact you?"
+          },
+          {
+            "id": "main-contact.phone",
+            "widget": "Input",
+            "placeholder": "",
+            "label": "Phone",
+            "showIf": {
+              "id": "main-contact.preferred-method",
+              "value": "phone"
+            },
+            "validation": {
+              "required": true,
+              "pattern": "^([(]?(0|\\+64)((2[0-9]?)|3|4|6|7|8|9)[)]?)[-\\s0-9]*$"
+            }
+          },
+          {
+            "id": "main-contact.mobile",
+            "widget": "Input",
+            "placeholder": "",
+            "label": "Mobile",
+            "showIf": {
+              "id": "main-contact.preferred-method",
+              "value": "sms"
+            },
+            "validation": {
+              "required": true,
+              "pattern": "^02[-\\s0-9]*$",
+              "minLength": 9,
+              "maxLength": 12
+            }
+          },
+          {
+            "id": "main-contact.email",
+            "widget": "Input",
+            "placeholder": "",
+            "label": "Email",
+            "showIf": {
+              "id": "main-contact.preferred-method",
+              "value": "email"
+            },
+            "validation": {
+              "required": true,
+              "pattern": "^[&_A-Za-z0-9-'+?]+(\\.[&_A-Za-z0-9-'+?]+)*@[&A-Za-z0-9-]+(\\.[&A-Za-z0-9-]+)*(\\.[&_A-Za-z0-9-]+)$"
+            }
+          }
+        ],
+        "label": "Contact details"
+      }
+    },
+    {
+      "pageId": "claim-complete",
+      "content": {
+        "groupId": "other-driver-details",
+        "elements": [],
+        "label": "Thanks, we've recieved your claim!"
+      }
+    }
+  ]
+}

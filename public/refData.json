@@ -1,0 +1,14 @@
+[
+  {
+    "label": "AMI",
+    "value": "ami"
+  },
+  {
+    "label": "State",
+    "value": "state"
+  },
+  {
+    "label": "Tower",
+    "value": "tower"
+  }
+]
