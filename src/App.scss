@@ -1,0 +1,149 @@
+@import "~bootstrap/scss/bootstrap";
+
+.App {
+  background-color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  pointer-events: none;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  button {
+    margin: 5px;
+  }
+}
+
+.container {
+  max-width: 95% !important;
+}
+
+.code textarea {
+  font-family: 'Roboto Mono' !important;
+  font-size: 14px !important;
+  min-height: 160px;
+}
+
+.DateInput input {
+  border: 1px solid #737373 !important;
+  border-radius: .25rem;
+}
+
+.slick-slide *[tabindex]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.repeater-item {
+  //border-radius: 4px;
+  margin-bottom: 25px;
+  //background: rgba(200,200,200,0.2);
+  padding: 25px;
+  padding-bottom: 5px;
+  //border-width: 1px;
+  //border-color: #ccc;
+  //border-style: solid;
+  //box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.06), 0px 2px 2px 0px rgba(0,0,0,0.07), 0px 3px 1px -2px rgba(0,0,0,0.06);
+  //margin: 15px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.87);
+  border-bottom-width: 1px;
+}
+
+.repeater-group {
+  margin-bottom: 25px;
+}
+
+.remove {
+  float: right;
+}
+
+.is-invalid {
+  border-color: #da0000;
+}
+
+.dynamic-form__label {
+  display: block;
+  //font-weight: 600;
+  //color: #00338d;
+  font-size: 16px;
+  font-family: "Roboto",sans-serif;
+  margin-bottom: .5rem;
+}
+
+.selectComponent {
+  min-width: 300px !important;
+  margin: 5px;
+}
+
+.formElement {
+  margin-bottom: 20px;
+}
+
+.background-enter {
+  transform: translate(100%);
+}
+.background-enter.background-enter-active {
+  transform: translate(0%);
+  transition: transform 700ms;
+}
+
+.background-leave {
+  transform: translate(0%);
+}
+.background-leave.background-leave-active {
+  display: none;
+}
+
+.form-container {
+  width: 100%;
+  margin-top: 0px;
+  overflow: hidden;
+}
+
+.form-slide {
+  width: 100%;
+  padding: 24px;
+}
+
+textarea {
+  box-shadow: none !important;
+}
+
+.progress-bar {
+  background-color: #62dafb !important;
+}
+
+.content-panel {
+  margin-bottom: 15px;
+}
+
+.screen {
+  overflow-y: scroll !important;
+}
+
+.dynamic-form {
+  display: flex;
+  justify-content: center;
+}
