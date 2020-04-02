@@ -1,14 +1,23 @@
 {
-  "main.css": "/react-formulate-demo/static/css/main.50cb2c93.chunk.css",
-  "main.js": "/react-formulate-demo/static/js/main.a45fb315.chunk.js",
-  "main.js.map": "/react-formulate-demo/static/js/main.a45fb315.chunk.js.map",
-  "runtime~main.js": "/react-formulate-demo/static/js/runtime~main.7c51d7f7.js",
-  "runtime~main.js.map": "/react-formulate-demo/static/js/runtime~main.7c51d7f7.js.map",
-  "static/js/2.f9b8f082.chunk.js": "/react-formulate-demo/static/js/2.f9b8f082.chunk.js",
-  "static/js/2.f9b8f082.chunk.js.map": "/react-formulate-demo/static/js/2.f9b8f082.chunk.js.map",
-  "index.html": "/react-formulate-demo/index.html",
-  "precache-manifest.dfdeddefd433f928bdb2353f55ce65e5.js": "/react-formulate-demo/precache-manifest.dfdeddefd433f928bdb2353f55ce65e5.js",
-  "service-worker.js": "/react-formulate-demo/service-worker.js",
-  "static/css/main.50cb2c93.chunk.css.map": "/react-formulate-demo/static/css/main.50cb2c93.chunk.css.map",
-  "static/media/logo.svg": "/react-formulate-demo/static/media/logo.5d5d9eef.svg"
+  "files": {
+    "main.css": "/react-formulate-demo/static/css/main.6164fb90.chunk.css",
+    "main.js": "/react-formulate-demo/static/js/main.9ae0969f.chunk.js",
+    "main.js.map": "/react-formulate-demo/static/js/main.9ae0969f.chunk.js.map",
+    "runtime-main.js": "/react-formulate-demo/static/js/runtime-main.2e99b8c1.js",
+    "runtime-main.js.map": "/react-formulate-demo/static/js/runtime-main.2e99b8c1.js.map",
+    "static/js/2.acae1599.chunk.js": "/react-formulate-demo/static/js/2.acae1599.chunk.js",
+    "static/js/2.acae1599.chunk.js.map": "/react-formulate-demo/static/js/2.acae1599.chunk.js.map",
+    "index.html": "/react-formulate-demo/index.html",
+    "precache-manifest.b53479ac3b5d51cd7011375f68873027.js": "/react-formulate-demo/precache-manifest.b53479ac3b5d51cd7011375f68873027.js",
+    "service-worker.js": "/react-formulate-demo/service-worker.js",
+    "static/css/main.6164fb90.chunk.css.map": "/react-formulate-demo/static/css/main.6164fb90.chunk.css.map",
+    "static/js/2.acae1599.chunk.js.LICENSE.txt": "/react-formulate-demo/static/js/2.acae1599.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/react-formulate-demo/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2e99b8c1.js",
+    "static/js/2.acae1599.chunk.js",
+    "static/css/main.6164fb90.chunk.css",
+    "static/js/main.9ae0969f.chunk.js"
+  ]
 }
