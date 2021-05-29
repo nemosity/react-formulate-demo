@@ -47,7 +47,7 @@ class App extends Component {
             <img src={logo} width="40" height="40" className="d-inline-block align-top App-logo" alt="logo" />
             <span className="navbar-brand mb-0 h1">React Formulate</span>
           </a>
-          <span className="navbar-brand mb-0">v0.0.2</span>
+          <span className="navbar-brand mb-0">v0.1.1</span>
         </nav>
         {this.renderProgressBar()}
         <div className="App">
