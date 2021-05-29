@@ -1,6 +1,6 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from "redux-saga/effects";
 
-import ActionTypes from '../constants/actionTypes';
+import ActionTypes from "../constants/actionTypes";
 
 function* doLoadSchema(action) {
   let parsedSchema;
@@ -8,8 +8,7 @@ function* doLoadSchema(action) {
   try {
     parsedSchema = JSON.parse(action.payload);
     valid = true;
-  }
-  catch (e) {
+  } catch (e) {
     valid = false;
   }
   if (valid) {

@@ -1,10 +1,12 @@
-import { Repeater } from '@nemosity/react-formulate';
-import Dropdown from '../components/Dropdown';
+import { Repeater } from "@nemosity/react-formulate";
+import Dropdown from "../components/Dropdown";
 
-import materailComponentMap from '../components/MaterialUI';
+import materailComponentMap from "../components/MaterialUI";
 
-export default {
+const components = {
   Repeater,
   Dropdown,
-  ...materailComponentMap
-}
+  ...materailComponentMap,
+};
+
+export default components;

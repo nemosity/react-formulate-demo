@@ -1,20 +1,17 @@
-import ActionTypes from '../constants/actionTypes';
+import ActionTypes from "../constants/actionTypes";
 
 const initialState = {
-  rawSchema: '',
+  rawSchema: "",
   parsedSchema: null,
-  valid: null
+  valid: null,
 };
 
-
 export default function schemaReducer(state = initialState, { type, payload }) {
-
   switch (type) {
-
     case ActionTypes.SCHEMA.UPDATE: {
       return {
         ...state,
-        rawSchema: payload
+        rawSchema: payload,
       };
     }
 
@@ -22,19 +19,18 @@ export default function schemaReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         parsedSchema: payload,
-        valid: true
+        valid: true,
       };
     }
 
     case ActionTypes.SCHEMA.ERROR: {
       return {
         ...state,
-        valid: false
+        valid: false,
       };
     }
 
     default:
       return state;
   }
-
 }

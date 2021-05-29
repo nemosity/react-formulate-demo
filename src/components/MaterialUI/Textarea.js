@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import TextField from '@material-ui/core/TextField';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import TextField from "@material-ui/core/TextField";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
 
-const Textarea = props => {
+const Textarea = (props) => {
   return (
     <div className="formElement">
       <FormControl error={!!props.error} className="Textarea" fullWidth>
@@ -14,7 +14,7 @@ const Textarea = props => {
           fullWidth
           {...props}
           label={null}
-          onChange={event => props.onChange(event.target.value)}
+          onChange={(event) => props.onChange(event.target.value)}
           margin="normal"
           multiline
           rows={5}
@@ -23,7 +23,7 @@ const Textarea = props => {
         {props.error && <FormHelperText>{props.error}</FormHelperText>}
       </FormControl>
     </div>
-  )
-}
+  );
+};
 
 export default Textarea;

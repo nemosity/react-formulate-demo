@@ -1,26 +1,40 @@
-import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import { connect } from "react-redux";
 
-import { moveBack, submit, updateForm, validateForm, validateElement } from '../actions/formActions';
-import { DynamicForm } from '@nemosity/react-formulate';
-import { StatefulDynamicForm } from '@nemosity/react-formulate';
+import {
+  moveBack,
+  submit,
+  updateForm,
+  validateForm,
+  validateElement,
+} from "../actions/formActions";
+import { DynamicForm } from "@nemosity/react-formulate";
+import { StatefulDynamicForm } from "@nemosity/react-formulate";
 
-import Progress from '../components/MaterialUI/Progress';
+import Progress from "../components/MaterialUI/Progress";
 
-import components from '../utils/componentMapMaterialUI';
+import components from "../utils/componentMapMaterialUI";
 
 const { Button } = components;
 
 class ReactFormulateForm extends Component {
-
   renderAlert = () => (
-    <div id="successLozenge" icon="icon__attention" type={this.props.valid ? 'success' : 'warning'} className="u-mar-b--3" inline="true" >
-      <p>{this.props.valid ? 'Valid schema' : 'Enter a valid schema or select a schema to load'}</p>
+    <div
+      id="successLozenge"
+      icon="icon__attention"
+      type={this.props.valid ? "success" : "warning"}
+      className="u-mar-b--3"
+      inline="true"
+    >
+      <p>
+        {this.props.valid
+          ? "Valid schema"
+          : "Enter a valid schema or select a schema to load"}
+      </p>
     </div>
-  )
+  );
   render() {
-
     if (!this.props.valid) {
       return this.renderAlert();
     }
@@ -28,8 +42,15 @@ class ReactFormulateForm extends Component {
     if (this.props.schema.config.paginated) {
       return (
         <div className="form-container">
-          <Progress steps={this.props.schema.schema.map(page => page.pageId)} activeStep={this.props.step} />
-          <ReactCSSTransitionGroup transitionName="background" transitionEnterTimeout={700} transitionLeaveTimeout={1}>
+          <Progress
+            steps={this.props.schema.schema.map((page) => page.pageId)}
+            activeStep={this.props.step}
+          />
+          <ReactCSSTransitionGroup
+            transitionName="background"
+            transitionEnterTimeout={700}
+            transitionLeaveTimeout={1}
+          >
             {this.props.schema.schema.map((page, i) => {
               if (this.props.step === i) {
                 return (
@@ -43,28 +64,48 @@ class ReactFormulateForm extends Component {
                       widgets={components}
                       config={this.props.schema.config || {}}
                       i18n={(label, params = {}) => {
-                        Object.keys(params).map(key => label = label.replace(`{{${key}}}`, params[key] || ''))
-                        return label
+                        Object.keys(params).map(
+                          (key) =>
+                            (label = label.replace(
+                              `{{${key}}}`,
+                              params[key] || ""
+                            ))
+                        );
+                        return label;
                       }}
                     />
                     <div className="buttonGroup">
-                      <Button tracking="eg1" onClick={() => this.props.onMoveBack()} variant="outlined" disabled={this.props.step - 1 < 0}>
+                      <Button
+                        tracking="eg1"
+                        onClick={() => this.props.onMoveBack()}
+                        variant="outlined"
+                        disabled={this.props.step - 1 < 0}
+                      >
                         Back
                       </Button>
-                      <Button name="eg2" onClick={() => this.props.onValidateForm(this.props.step)} primary="true" disabled={this.props.step + 1 > this.props.schema.schema.length - 1}>
+                      <Button
+                        name="eg2"
+                        onClick={() =>
+                          this.props.onValidateForm(this.props.step)
+                        }
+                        primary="true"
+                        disabled={
+                          this.props.step + 1 >
+                          this.props.schema.schema.length - 1
+                        }
+                      >
                         Next
                       </Button>
                     </div>
                   </div>
-                )
+                );
               } else {
                 return null;
               }
-            }
-            )}
+            })}
           </ReactCSSTransitionGroup>
         </div>
-      )
+      );
     }
 
     return (
@@ -79,7 +120,7 @@ class ReactFormulateForm extends Component {
         />
       </div>
     );
-  };
+  }
 }
 
 const mapStateToProps = ({ form, schema }) => {
@@ -88,16 +129,17 @@ const mapStateToProps = ({ form, schema }) => {
     form: form.input,
     step: form.step,
     schema: schema.parsedSchema,
-    valid: schema.valid
-  }
+    valid: schema.valid,
+  };
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onUpdateForm: (path, data) => dispatch(updateForm({ path, data })),
-  onMoveBack: step => dispatch(moveBack(step)),
-  onValidateForm: step => dispatch(validateForm(step)),
-  onValidateElement: (schema, path) => dispatch(validateElement({ schema, path })),
-  onSubmit: (data) => dispatch(submit(data))
+  onMoveBack: (step) => dispatch(moveBack(step)),
+  onValidateForm: (step) => dispatch(validateForm(step)),
+  onValidateElement: (schema, path) =>
+    dispatch(validateElement({ schema, path })),
+  onSubmit: (data) => dispatch(submit(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReactFormulateForm);

@@ -1,9 +1,9 @@
-import { put, select, takeLatest } from 'redux-saga/effects';
-import _get from 'lodash/get';
+import { put, select, takeLatest } from "redux-saga/effects";
+import _get from "lodash/get";
 
-import ActionTypes from '../constants/actionTypes';
-import { getFormInput, getParsedSchema } from '../utils/stateSelectors';
-import { joinPath, validate } from '@nemosity/react-formulate';
+import ActionTypes from "../constants/actionTypes";
+import { getFormInput, getParsedSchema } from "../utils/stateSelectors";
+import { joinPath, validate } from "@nemosity/react-formulate";
 
 function* doValidateForm(action) {
   const input = yield select(getFormInput);
@@ -28,15 +28,21 @@ export function* validateForm() {
 
 function* doValidateElement(action) {
   const input = yield select(getFormInput);
-  const {schema, path} = action.payload;
+  const { schema, path } = action.payload;
 
   if (schema.id) {
     const { errors } = validate(schema, input, path);
 
     if (errors) {
-      yield put({ type: ActionTypes.FORM.VALIDATE_ELEMENT_FAIL, payload: errors });
+      yield put({
+        type: ActionTypes.FORM.VALIDATE_ELEMENT_FAIL,
+        payload: errors,
+      });
     } else {
-      yield put({ type: ActionTypes.FORM.VALIDATE_ELEMENT_SUCCESS, payload: joinPath(schema.id, path) });
+      yield put({
+        type: ActionTypes.FORM.VALIDATE_ELEMENT_SUCCESS,
+        payload: joinPath(schema.id, path),
+      });
     }
   }
 }
@@ -50,7 +56,7 @@ function* doMoveNext(action) {
   const schema = yield select(getParsedSchema);
   let nextStep = action.payload + 1;
 
-  const shouldSkipStep = step => {
+  const shouldSkipStep = (step) => {
     const showIf = schema[step].showIf;
     if (showIf) {
       if (!(_get(input, showIf.id) === showIf.value)) {
@@ -58,7 +64,7 @@ function* doMoveNext(action) {
       }
     }
     return false;
-  }
+  };
 
   while (shouldSkipStep(nextStep)) {
     nextStep++;
